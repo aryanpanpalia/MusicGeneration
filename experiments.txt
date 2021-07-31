@@ -1,0 +1,29 @@
+variables:
+    size = emsize = nhid
+    nlayers
+    lr
+    bptt (sequence length)
+    dropout
+
+1: size: 1024, nlayers: 2, lr: 20, bptt: 128, dropout: 0.2
+    Command: python main.py --emsize 1024 --nhid 1024 --tied --cuda --batch_size 10 --epochs 20 --save experiment1.pt
+    Final test ppl: 35.99
+
+2: size: 1280, nlayers: 2, lr: 20, bptt: 128, dropout: 0.2
+    Command: python main.py --emsize 1280 --nhid 1280 --tied --cuda --batch_size 12 --epochs 20 --save experiment2.pt
+    Final test ppl: 35.77
+
+3: size: 1280, nlayers: 2, lr: 20, bptt: 128, dropout: 0.4
+    Command: python main.py --emsize 1280 --nhid 1280 --tied --cuda --dropout 0.4 --batch_size 12 --epochs 11 --save experiment3.pt
+    Final test ppl: 33.38
+
+    3-1: continuing training from lr=5:
+        Final test ppl: 30.41
+
+4: size: 1280, nlayers: 2, lr: 20, bptt: 128, dropout: 0.6
+    Command: python main.py --emsize 1280 --nhid 1280 --tied --cuda --dropout 0.6 --batch_size 12 --epochs 15 --save experiment4.pt
+    Final test ppl: 33.42
+
+5: size: 1024, nlayers: 2, lr: 20, bptt: 192, dropout: 0.5
+    Command: python main.py --emsize 1024 --nhid 1024 --tied --cuda --bptt 192 --dropout 0.5 --batch_size 4 --epochs 15 --save experiment5.pt
+    Final test ppl: 47.66
